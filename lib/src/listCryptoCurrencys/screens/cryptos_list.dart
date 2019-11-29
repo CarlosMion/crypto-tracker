@@ -5,7 +5,6 @@ import '../../listCryptoCurrencys/widgets/user_icon.dart';
 import '../../design/custom_app_bar.dart';
 import '../../util/constants.dart';
 import '../bloc/cryptocurrencies_provider.dart';
-import '../models/crypto_model.dart';
 import '../widgets/loading_container.dart';
 
 class CryptosList extends StatelessWidget {
@@ -24,16 +23,16 @@ class CryptosList extends StatelessWidget {
   Widget buildCryptosList(CryptocurrenciesBloc bloc) {
     return StreamBuilder(
       stream: bloc.listCryptos,
-      builder:
-          (BuildContext context, AsyncSnapshot<List<String>> listOfCryptoIds) {
+      builder: (context, AsyncSnapshot<List<String>> listOfCryptoIds) {
         if (!listOfCryptoIds.hasData) {
-          return LoadingContainer();
+          print(listOfCryptoIds.data);
+          return Refresh(child: LoadingContainer());
         }
 
         return Refresh(
           child: ListView.builder(
             itemCount: listOfCryptoIds.data.length,
-            itemBuilder: (BuildContext context, int index) {
+            itemBuilder: (context, int index) {
               bloc.fetchCryptoInfo(listOfCryptoIds.data[index]);
 
               return Text(listOfCryptoIds.data[index]);
