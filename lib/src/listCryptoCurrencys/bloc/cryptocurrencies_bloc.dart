@@ -1,21 +1,27 @@
-import 'package:rxdart/rxdart.dart';;
+import 'package:rxdart/rxdart.dart';
 import '../models/crypto_model.dart';
 import '../api/coin_cap_api.dart';
 
 class CryptocurrenciesBloc {
   final _coinCapApi = CoinCapApi();
-
+  final _listCryptos = PublishSubject<List<String>>()
   final _cryptosOutput = BehaviorSubject<Map<int, Future<CryptoModel>>>();
   final _cryptosFetcher = PublishSubject<String>();
 
   // Getters to Streams
-  Observable<Map<int, Future<CryptoModel>>> get items => _cryptosOutput.stream;
+  Observable<List<String>> get listCryptos => _listCryptos.stream;
+  Observable<Map<int, Future<CryptoModel>>> get cryptos => _cryptosOutput.stream;
 
   //Getters to Sinks
   Function(String) get fetchCryptoInfo => _cryptosFetcher.sink.add;
 
   CryptocurrenciesBloc() {
     _cryptosFetcher.stream.transform(_cryptosTransformer()).pipe(_cryptosOutput);
+  }
+
+  fetchCryptos() async {
+    final List<String> cryptos = ['bitcoin','ethereum']; // TODO get from asyncstorage
+    _listCryptos.sink.add(cryptos);
   }
 
   _cryptosTransformer() {
