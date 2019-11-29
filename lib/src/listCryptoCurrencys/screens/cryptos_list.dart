@@ -1,3 +1,4 @@
+import 'package:crypto_tracker/src/listCryptoCurrencys/widgets/pull_refresh.dart';
 import 'package:flutter/material.dart';
 
 import '../../listCryptoCurrencys/widgets/user_icon.dart';
@@ -21,6 +22,25 @@ class CryptosList extends StatelessWidget {
   }
 
   Widget buildCryptosList(CryptocurrenciesBloc bloc) {
-    return StreamBuilder();
+    return StreamBuilder(
+      stream: bloc.listCryptos,
+      builder:
+          (BuildContext context, AsyncSnapshot<List<String>> listOfCryptoIds) {
+        if (!listOfCryptoIds.hasData) {
+          return LoadingContainer();
+        }
+
+        return Refresh(
+          child: ListView.builder(
+            itemCount: listOfCryptoIds.data.length,
+            itemBuilder: (BuildContext context, int index) {
+              bloc.fetchCryptoInfo(listOfCryptoIds.data[index]);
+
+              return Text(listOfCryptoIds.data[index]);
+            },
+          ),
+        );
+      },
+    );
   }
 }

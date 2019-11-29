@@ -12,7 +12,7 @@ class Refresh extends StatelessWidget {
     return RefreshIndicator(
       child: child,
       onRefresh: () async {
-        await bloc.fetchCryptoInfo();
+        await bloc.fetchCryptos();
       },
     );
   }
