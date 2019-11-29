@@ -12,8 +12,9 @@ class CryptoModel {
   final String priceUsd;
   final String changePercent24Hr;
   final String vwap24Hr;
+  final int timestamp;
 
-  CryptoModel.fromJson(Map<String, String> json)
+  CryptoModel.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         rank = json['rank'],
         symbol = json['symbol'],
@@ -24,5 +25,6 @@ class CryptoModel {
         volumeUsd24Hr = json['volumeUsd24Hr'],
         priceUsd = json['priceUsd'],
         changePercent24Hr = json['changePercent24Hr'],
-        vwap24Hr = json['vwap24Hr'];
+        vwap24Hr = json['vwap24Hr'],
+        timestamp = json['timestamp'];
 }
