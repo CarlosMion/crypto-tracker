@@ -48,8 +48,8 @@ class CryptosList extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 24.0),
                 child: FlatButton.icon(
-                  onPressed: () =>
-                      Navigator.pushNamed(context, '/addCryptoCurrency'),
+                  onPressed: () => Navigator.pushNamed(
+                      context, ADD_CRYPTOCURRENCY_SCREEN_PATH),
                   icon: Icon(
                     Icons.add,
                     color: Color.fromRGBO(56, 87, 117, 1.0),
