@@ -16,4 +16,14 @@ class CoinCapApi {
 
     return CryptoModel.fromJson(modelInfo['data']);
   }
+
+  Future<bool> validateCryptoName(String cryptoId) async {
+    final response = await client.get('$_rootUrl/assets/$cryptoId');
+
+    if (response.statusCode == 200) {
+      return true;
+    }
+
+    return false;
+  }
 }

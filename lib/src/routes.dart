@@ -16,8 +16,8 @@ Route routes(RouteSettings settings) {
 
           cryptocurrenciesBloc.fetchCryptos();
 
-          Timer.periodic(
-              Duration(seconds: 5), (_) => cryptocurrenciesBloc.fetchCryptos());
+          Timer.periodic(Duration(seconds: 10),
+              (_) => cryptocurrenciesBloc.fetchCryptos());
 
           return CryptosList();
         },

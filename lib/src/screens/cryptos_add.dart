@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../widgets/custom_app_bar.dart';
 import '../util/constants.dart';
 import '../widgets/input_area.dart';
+import '../util/async_storage.dart';
+import '../api/coin_cap_api.dart';
 
 class CryptosAdd extends StatelessWidget {
   Widget build(context) {
@@ -18,8 +20,9 @@ class CryptosAdd extends StatelessWidget {
         color: Colors.white,
         child: InputArea(
           label: 'Add a Cryptocurrency',
-          hint: 'Use a name or ticket symbol...',
+          hint: 'Use the full name of the currency',
           buttonText: 'Add',
+          onSubmit: submit,
         ),
       ),
     );
@@ -44,5 +47,18 @@ class CryptosAdd extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  submit(BuildContext context, String cryptoId) async {
+    final CoinCapApi coinCapApi = CoinCapApi();
+    if (await coinCapApi.validateCryptoName(cryptoId)) {
+      await AsyncStorage.addCryptoCurrency(cryptoId);
+      return Navigator.pushNamed(context, LIST_SCREEN_PATH);
+    }
+    final snackBar = SnackBar(
+        content:
+            Text("Sorry, we couldn't find this currency in our databases."));
+
+    return Scaffold.of(context).showSnackBar(snackBar);
   }
 }
