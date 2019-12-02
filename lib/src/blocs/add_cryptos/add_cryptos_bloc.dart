@@ -1,18 +1,18 @@
 import 'dart:async';
-import 'add_cryptos_validators.dart';
 import 'package:rxdart/rxdart.dart';
 
-class AddCryptosBloc extends Object with AddCryptosValidators {
+class AddCryptosBloc {
   final _cryptoCurrencyController = BehaviorSubject<String>();
 
   Function(String) get changeCryptocurrency =>
       _cryptoCurrencyController.sink.add;
 
-  Stream<String> get cryptoCurrency =>
-      _cryptoCurrencyController.stream.transform(validateCryptocurrency);
+  Stream<String> get cryptoCurrency => _cryptoCurrencyController.stream;
 
   submit() {
     final cryptoCurrency = _cryptoCurrencyController.value;
+
+    print(cryptoCurrency);
   }
 
   dispose() {

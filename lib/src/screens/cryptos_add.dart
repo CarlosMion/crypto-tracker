@@ -20,7 +20,6 @@ class CryptosAdd extends StatelessWidget {
           label: 'Add a Cryptocurrency',
           hint: 'Use a name or ticket symbol...',
           buttonText: 'Add',
-          onSubmit: (cryptocurrency) => print(cryptocurrency),
         ),
       ),
     );

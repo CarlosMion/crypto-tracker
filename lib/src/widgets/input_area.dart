@@ -6,9 +6,8 @@ class InputArea extends StatelessWidget {
   final String label;
   final String hint;
   final String buttonText;
-  final Function onSubmit;
 
-  InputArea({this.label, this.hint, this.buttonText, this.onSubmit});
+  InputArea({this.label, this.hint, this.buttonText});
 
   Widget build(context) {
     final bloc = AddCryptosProvider.of(context);
@@ -22,6 +21,7 @@ class InputArea extends StatelessWidget {
         children: <Widget>[
           buildLabel(label),
           buildCryptoInputField(bloc, hint),
+          buildAddButton(bloc),
         ],
       ),
     );
@@ -60,5 +60,25 @@ class InputArea extends StatelessWidget {
             ),
           );
         });
+  }
+
+  Widget buildAddButton(AddCryptosBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.cryptoCurrency,
+      builder: (context, snapshot) {
+        print(snapshot);
+        return Container(
+          margin: EdgeInsets.only(top: 8.0),
+          alignment: Alignment.centerRight,
+          child: RaisedButton(
+            disabledColor: Color.fromRGBO(251, 210, 77, 1.0),
+            child: Text('Add'),
+            color: Color.fromRGBO(251, 210, 77, 1.0),
+            onPressed:
+                snapshot.hasData && snapshot.data != '' ? bloc.submit : null,
+          ),
+        );
+      },
+    );
   }
 }

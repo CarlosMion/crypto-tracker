@@ -8,7 +8,6 @@ class AsyncStorage {
         prefs.getStringList('savedCryptocurrencies');
     savedCryptocurrencies.add(cryptoId);
 
-    print(savedCryptocurrencies);
     prefs.setStringList('savedCryptocurrencies', savedCryptocurrencies);
   }
 
