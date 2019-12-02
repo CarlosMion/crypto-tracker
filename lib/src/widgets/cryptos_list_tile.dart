@@ -43,27 +43,33 @@ class CryptosListTile extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: <Widget>[
-          SlidableListTile(
-            leading: CircleAvatar(
-              backgroundColor: Colors.indigoAccent,
-              child: Image.network(
-                  'https://static.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png'),
-              foregroundColor: Colors.white,
-            ),
-            title: Text(crypto.name),
-            subtitle: Text(crypto.symbol),
-            trailling: Container(
-              margin: EdgeInsets.only(top: 12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Price(
-                    price: crypto.priceUsd,
-                    locale: 'en_US',
-                    symbol: '\$',
-                  ),
-                  ChangeLast24Hr(changePercent24Hr: crypto.changePercent24Hr),
-                ],
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 4.0),
+            child: SlidableListTile(
+              leading: CircleAvatar(
+                backgroundColor: Colors.indigoAccent,
+                child: Image.network(
+                    'https://static.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png'),
+                foregroundColor: Colors.white,
+              ),
+              title: Text(
+                crypto.name,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(crypto.symbol),
+              trailling: Container(
+                margin: EdgeInsets.only(top: 12.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    Price(
+                      price: crypto.priceUsd,
+                      locale: 'en_US',
+                      symbol: '\$',
+                    ),
+                    ChangeLast24Hr(changePercent24Hr: crypto.changePercent24Hr),
+                  ],
+                ),
               ),
             ),
           ),
