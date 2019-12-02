@@ -9,8 +9,10 @@ final _rootUrl = 'https://api.coincap.io/v2';
 class CoinCapApi {
   Client client = Client();
 
-  Future<CryptoModel> fetchCryptoInfo(String cryptoSymbol) async {
-    final response = await client.get('$_rootUrl/assets/$cryptoSymbol');
+  Future<CryptoModel> fetchCryptoInfo(String cryptoId) async {
+    print(cryptoId);
+
+    final response = await client.get('$_rootUrl/assets/$cryptoId');
 
     final modelInfo = json.decode(response.body);
 

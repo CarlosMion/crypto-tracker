@@ -4,21 +4,19 @@ import 'package:test/test.dart';
 import 'package:http/http.dart';
 
 import 'package:crypto_tracker/src/api/coin_cap_api.dart';
-import 'package:crypto_tracker/src/api/models/crypto_model.dart';
 
 void main() {
-  test('FetchItem returns a item model', () async {
+  test('fetchCryptoInfo returns a cryptoModel', () async {
     final coinCapApi = CoinCapApi();
     coinCapApi.client = MockClient((request) async {
-      final jsonMap = {'id': 'bitcoin'};
+      final jsonMap = {
+        'data': {'id': 'bitcoin'}
+      };
 
       return Response(json.encode(jsonMap), 200);
     });
 
-    final CryptoModel cryptocurrency =
-        await coinCapApi.fetchCryptoInfo('bitcoin');
-
-    print(cryptocurrency);
+    final cryptocurrency = await coinCapApi.fetchCryptoInfo('bitcoin');
 
     expect(cryptocurrency.id, 'bitcoin');
   });
