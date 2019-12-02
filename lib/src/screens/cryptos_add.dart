@@ -2,23 +2,31 @@ import 'package:flutter/material.dart';
 
 import '../widgets/custom_app_bar.dart';
 import '../util/constants.dart';
+import '../widgets/input_area.dart';
 
 class CryptosAdd extends StatelessWidget {
   Widget build(context) {
     return Scaffold(
       appBar: CustomAppBar(
         color: Colors.white,
-        leading: buildLeading(context),
+        leading: leading(context),
         title: 'Back to list',
       ),
       body: Container(
         color: Colors.white,
-        child: Center(),
+        child: Center(
+          child: InputArea(
+            label: 'Add a Cryptocurrency',
+            hint: 'Use a name or ticket symbol...',
+            buttonText: 'Add',
+            onSubmit: (cryptocurrency) => print(cryptocurrency),
+          ),
+        ),
       ),
     );
   }
 
-  Widget buildLeading(BuildContext context) {
+  Widget leading(BuildContext context) {
     return FlatButton.icon(
       onPressed: () => Navigator.pushNamed(context, LIST_SCREEN_PATH),
       icon: Icon(

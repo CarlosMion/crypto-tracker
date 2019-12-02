@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './screens/cryptos_list.dart';
-import './blocs/cryptocurrencies_provider.dart';
+import './blocs/list_cryptos/cryptocurrencies_provider.dart';
 import './screens/cryptos_add.dart';
 import './util/constants.dart';
 

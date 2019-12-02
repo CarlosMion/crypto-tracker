@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/user_icon.dart';
 import '../widgets/custom_app_bar.dart';
 import '../util/constants.dart';
-import '../blocs/cryptocurrencies_provider.dart';
+import '../blocs/list_cryptos/cryptocurrencies_provider.dart';
 import '../widgets/loading_container.dart';
 import '../widgets/pull_refresh.dart';
 import '../widgets/cryptos_list_tile.dart';

@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'loading_container.dart';
 import '../api/models/crypto_model.dart';
-import '../blocs/cryptocurrencies_provider.dart';
+import '../blocs/list_cryptos/cryptocurrencies_provider.dart';
 import './slidable_list_tile.dart';
 import './price.dart';
 import './change_last_day.dart';
