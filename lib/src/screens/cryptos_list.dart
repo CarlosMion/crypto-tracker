@@ -26,7 +26,26 @@ class CryptosList extends StatelessWidget {
       stream: bloc.listCryptos,
       builder: (context, AsyncSnapshot<List<String>> listOfCryptoIds) {
         if (!listOfCryptoIds.hasData) {
-          return Refresh(child: LoadingContainer());
+          return Container(
+            alignment: Alignment.topCenter,
+            margin: EdgeInsets.only(top: 24.0),
+            child: FlatButton.icon(
+              onPressed: () =>
+                  Navigator.pushNamed(context, ADD_CRYPTOCURRENCY_SCREEN_PATH),
+              icon: Icon(
+                Icons.add,
+                color: Color.fromRGBO(56, 87, 117, 1.0),
+              ),
+              label: Text(
+                'Add a Cryptocurrency',
+                style: TextStyle(
+                  color: Color.fromRGBO(56, 87, 117, 1.0),
+                  fontFamily: 'Inter',
+                  fontSize: 16.0,
+                ),
+              ),
+            ),
+          );
         }
 
         return Container(

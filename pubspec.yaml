@@ -29,6 +29,7 @@ dependencies:
   rxdart: ^0.22.6
   flutter_slidable: "^0.5.4"
   intl: "^0.15.6"
+  shared_preferences: ^0.5.4+6
 
 dev_dependencies:
   test: ^1.5.1
