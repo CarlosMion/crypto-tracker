@@ -27,8 +27,6 @@ class CryptocurrenciesBloc {
   fetchCryptos() async {
     final List<String> cryptos = await AsyncStorage.getCryptocurrencies();
 
-    // print(cryptos);
-
     return cryptos != null ? _listCryptos.sink.add(cryptos) : null;
   }
 

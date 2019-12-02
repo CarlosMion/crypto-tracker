@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 import './screens/cryptos_list.dart';
 import './blocs/list_cryptos/cryptocurrencies_provider.dart';
@@ -14,6 +15,9 @@ Route routes(RouteSettings settings) {
           final cryptocurrenciesBloc = CryptocurrenciesProvider.of(context);
 
           cryptocurrenciesBloc.fetchCryptos();
+
+          Timer.periodic(
+              Duration(seconds: 5), (_) => cryptocurrenciesBloc.fetchCryptos());
 
           return CryptosList();
         },

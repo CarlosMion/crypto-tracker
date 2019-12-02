@@ -1,6 +1,8 @@
-import '../util/async_storage.dart';
 import 'package:flutter/material.dart';
+
+import '../util/async_storage.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import '../blocs/list_cryptos/cryptocurrencies_provider.dart';
 
 class SlidableListTile extends StatelessWidget {
   final Widget leading;
@@ -11,6 +13,8 @@ class SlidableListTile extends StatelessWidget {
   SlidableListTile({this.leading, this.title, this.subtitle, this.trailling});
 
   Widget build(context) {
+    final bloc = CryptocurrenciesProvider.of(context);
+
     return Slidable(
       actionPane: SlidableScrollActionPane(),
       actionExtentRatio: 0.25,
@@ -31,7 +35,10 @@ class SlidableListTile extends StatelessWidget {
           caption: 'Delete',
           color: Colors.red,
           icon: Icons.delete,
-          onTap: () => AsyncStorage.removeCryptoCurrency(title.toLowerCase()),
+          onTap: () async {
+            await AsyncStorage.removeCryptoCurrency(title.toLowerCase());
+            bloc.fetchCryptos();
+          },
         ),
       ],
     );

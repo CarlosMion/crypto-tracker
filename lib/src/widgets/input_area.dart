@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../blocs/add_cryptos/add_cryptos_provider.dart';
+import '../util/async_storage.dart';
+import '../util/constants.dart';
 
 class InputArea extends StatelessWidget {
   final String label;
@@ -62,11 +64,16 @@ class InputArea extends StatelessWidget {
         });
   }
 
+  submit(BuildContext context, String cryptoId) async {
+    await AsyncStorage.addCryptoCurrency(cryptoId);
+
+    Navigator.pushNamed(context, LIST_SCREEN_PATH);
+  }
+
   Widget buildAddButton(AddCryptosBloc bloc) {
     return StreamBuilder(
       stream: bloc.cryptoCurrency,
       builder: (context, snapshot) {
-        print(snapshot);
         return Container(
           margin: EdgeInsets.only(top: 8.0),
           alignment: Alignment.centerRight,
@@ -74,8 +81,9 @@ class InputArea extends StatelessWidget {
             disabledColor: Color.fromRGBO(251, 210, 77, 1.0),
             child: Text('Add'),
             color: Color.fromRGBO(251, 210, 77, 1.0),
-            onPressed:
-                snapshot.hasData && snapshot.data != '' ? bloc.submit : null,
+            onPressed: snapshot.hasData && snapshot.data != ''
+                ? () => submit(context, snapshot.data)
+                : null,
           ),
         );
       },

@@ -5,7 +5,7 @@ class AsyncStorage {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     final List<String> savedCryptocurrencies =
-        prefs.getStringList('savedCryptocurrencies');
+        prefs.getStringList('savedCryptocurrencies') ?? [];
     savedCryptocurrencies.add(cryptoId);
 
     prefs.setStringList('savedCryptocurrencies', savedCryptocurrencies);
