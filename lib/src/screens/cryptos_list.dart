@@ -6,6 +6,7 @@ import '../util/constants.dart';
 import '../blocs/cryptocurrencies_provider.dart';
 import '../widgets/loading_container.dart';
 import '../widgets/pull_refresh.dart';
+import '../widgets/cryptos_list_tile.dart';
 
 class CryptosList extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class CryptosList extends StatelessWidget {
             itemBuilder: (context, int index) {
               bloc.fetchCryptoInfo(listOfCryptoIds.data[index]);
 
-              return CryptosListTile(itemId: listOfCryptoIds.data[index]);
+              return CryptosListTile(cryptoId: listOfCryptoIds.data[index]);
             },
           ),
         );

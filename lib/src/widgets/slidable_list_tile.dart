@@ -17,11 +17,6 @@ class SlidableListTile extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           leading: leading,
-          // leading:  CircleAvatar(
-          //   backgroundColor: Colors.indigoAccent,
-          //   child:  Text('$3'),
-          //   foregroundColor: Colors.white,
-          // ),
           title: title,
           subtitle: subtitle,
           trailing: trailling,
