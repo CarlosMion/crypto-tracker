@@ -10,8 +10,6 @@ class CoinCapApi {
   Client client = Client();
 
   Future<CryptoModel> fetchCryptoInfo(String cryptoId) async {
-    print(cryptoId);
-
     final response = await client.get('$_rootUrl/assets/$cryptoId');
 
     final modelInfo = json.decode(response.body);

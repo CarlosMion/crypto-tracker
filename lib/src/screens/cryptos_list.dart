@@ -34,7 +34,7 @@ class CryptosList extends StatelessWidget {
             itemBuilder: (context, int index) {
               bloc.fetchCryptoInfo(listOfCryptoIds.data[index]);
 
-              return Text(listOfCryptoIds.data[index]);
+              return CryptosListTile(itemId: listOfCryptoIds.data[index]);
             },
           ),
         );
