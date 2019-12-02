@@ -1,7 +1,8 @@
 import 'package:rxdart/rxdart.dart';
 
-import '../api/models/crypto_model.dart';
-import '../api/coin_cap_api.dart';
+import '../../api/models/crypto_model.dart';
+import '../../api/coin_cap_api.dart';
+import '../../util/async_storage.dart';
 
 class CryptocurrenciesBloc {
   final _coinCapApi = CoinCapApi();
@@ -24,11 +25,9 @@ class CryptocurrenciesBloc {
   }
 
   fetchCryptos() async {
-    final List<String> cryptos = [
-      'bitcoin',
-      'ethereum'
-    ]; // TODO get from asyncstorage
-    _listCryptos.sink.add(cryptos);
+    final List<String> cryptos = await AsyncStorage.getCryptocurrencies();
+
+    return cryptos != null ? _listCryptos.sink.add(cryptos) : null;
   }
 
   _cryptosTransformer() {

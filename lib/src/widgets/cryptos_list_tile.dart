@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'loading_container.dart';
 import '../api/models/crypto_model.dart';
-import '../blocs/cryptocurrencies_provider.dart';
+import '../blocs/list_cryptos/cryptocurrencies_provider.dart';
 import './slidable_list_tile.dart';
 import './price.dart';
 import './change_last_day.dart';
@@ -52,10 +52,7 @@ class CryptosListTile extends StatelessWidget {
                     'https://static.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png'),
                 foregroundColor: Colors.white,
               ),
-              title: Text(
-                crypto.name,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              title: crypto.name,
               subtitle: Text(crypto.symbol),
               trailling: Container(
                 margin: EdgeInsets.only(top: 12.0),
