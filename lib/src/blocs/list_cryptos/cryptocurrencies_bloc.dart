@@ -1,7 +1,7 @@
 import 'package:rxdart/rxdart.dart';
 
-import '../api/models/crypto_model.dart';
-import '../api/coin_cap_api.dart';
+import '../../api/models/crypto_model.dart';
+import '../../api/coin_cap_api.dart';
 
 class CryptocurrenciesBloc {
   final _coinCapApi = CoinCapApi();

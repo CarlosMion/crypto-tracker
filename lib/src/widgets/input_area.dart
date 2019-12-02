@@ -19,7 +19,6 @@ class InputArea extends StatelessWidget {
               fontFamily: 'Inter',
               fontWeight: FontWeight.bold,
               fontSize: 24.0,
-              height: 36.0,
             ),
           ),
         ],

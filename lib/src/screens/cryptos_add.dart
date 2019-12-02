@@ -13,14 +13,13 @@ class CryptosAdd extends StatelessWidget {
         title: 'Back to list',
       ),
       body: Container(
+        alignment: Alignment.centerLeft,
         color: Colors.white,
-        child: Center(
-          child: InputArea(
-            label: 'Add a Cryptocurrency',
-            hint: 'Use a name or ticket symbol...',
-            buttonText: 'Add',
-            onSubmit: (cryptocurrency) => print(cryptocurrency),
-          ),
+        child: InputArea(
+          label: 'Add a Cryptocurrency',
+          hint: 'Use a name or ticket symbol...',
+          buttonText: 'Add',
+          onSubmit: (cryptocurrency) => print(cryptocurrency),
         ),
       ),
     );
