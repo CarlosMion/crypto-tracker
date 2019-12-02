@@ -1,11 +1,11 @@
-import 'package:crypto_tracker/src/listCryptoCurrencys/widgets/pull_refresh.dart';
 import 'package:flutter/material.dart';
 
-import '../../listCryptoCurrencys/widgets/user_icon.dart';
-import '../../design/custom_app_bar.dart';
-import '../../util/constants.dart';
-import '../bloc/cryptocurrencies_provider.dart';
+import '../widgets/user_icon.dart';
+import '../widgets/custom_app_bar.dart';
+import '../util/constants.dart';
+import '../blocs/cryptocurrencies_provider.dart';
 import '../widgets/loading_container.dart';
+import '../widgets/pull_refresh.dart';
 
 class CryptosList extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -25,7 +25,6 @@ class CryptosList extends StatelessWidget {
       stream: bloc.listCryptos,
       builder: (context, AsyncSnapshot<List<String>> listOfCryptoIds) {
         if (!listOfCryptoIds.hasData) {
-          print(listOfCryptoIds.data);
           return Refresh(child: LoadingContainer());
         }
 

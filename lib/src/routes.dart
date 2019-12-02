@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './listCryptoCurrencys/screens/cryptos_list.dart';
-import './listCryptoCurrencys/bloc/cryptocurrencies_provider.dart';
+import './screens/cryptos_list.dart';
+import './blocs/cryptocurrencies_provider.dart';
 
 Route routes(RouteSettings settings) {
   switch (settings.name) {

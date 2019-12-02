@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class CryptoModel {
   final String id;
   final String rank;
