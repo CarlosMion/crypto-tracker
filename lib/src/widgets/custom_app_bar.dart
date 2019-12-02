@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: <Widget>[
           leading ?? Container(),
           buildTitle(),
-          buildAction(),
+          action != null ? buildAction() : Container(),
         ],
       ),
     );
