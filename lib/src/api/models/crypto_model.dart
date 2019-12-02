@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class CryptoModel {
   final String id;
   final String rank;
@@ -9,8 +7,8 @@ class CryptoModel {
   final String maxSupply;
   final String marketCapUsd;
   final String volumeUsd24Hr;
-  final String priceUsd;
-  final String changePercent24Hr;
+  final double priceUsd;
+  final double changePercent24Hr;
   final String vwap24Hr;
   final int timestamp;
 
@@ -23,8 +21,8 @@ class CryptoModel {
         maxSupply = json['maxSupply'],
         marketCapUsd = json['marketCapUsd'],
         volumeUsd24Hr = json['volumeUsd24Hr'],
-        priceUsd = json['priceUsd'],
-        changePercent24Hr = json['changePercent24Hr'],
+        priceUsd = double.parse(json['priceUsd']) ?? 0.0,
+        changePercent24Hr = double.parse(json['changePercent24Hr']) ?? 0.0,
         vwap24Hr = json['vwap24Hr'],
         timestamp = json['timestamp'];
 }

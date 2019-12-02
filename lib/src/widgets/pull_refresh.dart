@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../bloc/cryptocurrencies_provider.dart';
+
+import '../blocs/cryptocurrencies_provider.dart';
 
 class Refresh extends StatelessWidget {
   final Widget child;
