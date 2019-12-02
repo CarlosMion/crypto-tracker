@@ -6,7 +6,8 @@ class ChangeLast24Hr extends StatelessWidget {
   ChangeLast24Hr({this.changePercent24Hr});
 
   Widget build(context) {
-    final String roundedChange = changePercent24Hr.toStringAsFixed(2);
+    final String roundedChange =
+        changePercent24Hr.toStringAsFixed(2).replaceAll('-', '');
 
     final icon = changePercent24Hr > 0
         ? Icon(
