@@ -58,7 +58,7 @@ class CryptosListTile extends StatelessWidget {
                   locale: 'en_US',
                   symbol: '\$',
                 ),
-                Text(crypto.changePercent24Hr)
+                Text('${crypto.changePercent24Hr}'),
               ],
             ),
           ),
