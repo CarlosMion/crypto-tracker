@@ -52,10 +52,7 @@ class CryptosListTile extends StatelessWidget {
                     'https://static.coincap.io/assets/icons/${crypto.symbol.toLowerCase()}@2x.png'),
                 foregroundColor: Colors.white,
               ),
-              title: Text(
-                crypto.name,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              title: crypto.name,
               subtitle: Text(crypto.symbol),
               trailling: Container(
                 margin: EdgeInsets.only(top: 12.0),

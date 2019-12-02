@@ -1,9 +1,10 @@
+import '../util/async_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class SlidableListTile extends StatelessWidget {
   final Widget leading;
-  final Widget title;
+  final String title;
   final Widget subtitle;
   final Widget trailling;
 
@@ -17,7 +18,10 @@ class SlidableListTile extends StatelessWidget {
         color: Colors.white,
         child: ListTile(
           leading: leading,
-          title: title,
+          title: Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           subtitle: subtitle,
           trailing: trailling,
         ),
@@ -27,7 +31,7 @@ class SlidableListTile extends StatelessWidget {
           caption: 'Delete',
           color: Colors.red,
           icon: Icons.delete,
-          onTap: () => print('Deleted'), //TODO remove from asyncStorage list
+          onTap: () => AsyncStorage.removeCryptoCurrency(title.toLowerCase()),
         ),
       ],
     );

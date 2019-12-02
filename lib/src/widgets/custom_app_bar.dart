@@ -5,18 +5,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Widget action;
   final Color color;
+  final double height;
 
-  CustomAppBar({this.leading, this.title, this.action, this.color});
+  CustomAppBar(
+      {this.leading, this.title, this.action, this.color, this.height});
 
   @override
   Size get preferredSize {
-    return new Size.fromHeight(90.0);
+    return new Size.fromHeight(height ?? 90);
   }
 
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.bottomCenter,
-      color: color != null ? color : Color.fromRGBO(56, 87, 117, 1.0),
+      color: color ?? Color.fromRGBO(56, 87, 117, 1.0),
       child: Row(
         children: <Widget>[
           leading ?? Container(),
