@@ -15,6 +15,7 @@ class Price extends StatelessWidget {
     final usdPrice = currencyFormatter.format(price);
     return Text(
       '$usdPrice',
+      textAlign: TextAlign.end,
       style: TextStyle(
         fontFamily: 'Inter',
         fontSize: 16.0,

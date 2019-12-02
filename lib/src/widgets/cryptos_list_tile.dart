@@ -5,7 +5,8 @@ import 'loading_container.dart';
 import '../api/models/crypto_model.dart';
 import '../blocs/cryptocurrencies_provider.dart';
 import './slidable_list_tile.dart';
-import '../widgets/price.dart';
+import './price.dart';
+import './change_last_day.dart';
 
 class CryptosListTile extends StatelessWidget {
   final String cryptoId;
@@ -52,13 +53,14 @@ class CryptosListTile extends StatelessWidget {
             title: Text(crypto.name),
             subtitle: Text(crypto.symbol),
             trailling: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Price(
                   price: crypto.priceUsd,
                   locale: 'en_US',
                   symbol: '\$',
                 ),
-                Text('${crypto.changePercent24Hr}'),
+                ChangeLast24Hr(changePercent24Hr: crypto.changePercent24Hr),
               ],
             ),
           ),
