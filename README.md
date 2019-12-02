@@ -59,3 +59,17 @@ Bloc+Provider pattern was the chosen architecture, As suggested by the Flutter t
 Karma commits was the chosen pattern for the commit messages.
 
     Link: http://karma-runner.github.io/3.0/dev/git-commit-msg.html
+
+## Run the project
+
+### Emulator or connected device
+
+run `flutter run` on your terminal.
+
+### Android
+
+Generate Apk file: run `flutter build apk --release` on your terminal.
+
+### IOS
+
+Generate Ipa file: run `flutter build ios --release` on your terminal.
