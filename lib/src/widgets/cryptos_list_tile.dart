@@ -52,16 +52,19 @@ class CryptosListTile extends StatelessWidget {
             ),
             title: Text(crypto.name),
             subtitle: Text(crypto.symbol),
-            trailling: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                Price(
-                  price: crypto.priceUsd,
-                  locale: 'en_US',
-                  symbol: '\$',
-                ),
-                ChangeLast24Hr(changePercent24Hr: crypto.changePercent24Hr),
-              ],
+            trailling: Container(
+              margin: EdgeInsets.only(top: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  Price(
+                    price: crypto.priceUsd,
+                    locale: 'en_US',
+                    symbol: '\$',
+                  ),
+                  ChangeLast24Hr(changePercent24Hr: crypto.changePercent24Hr),
+                ],
+              ),
             ),
           ),
           Container(
