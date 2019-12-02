@@ -29,14 +29,42 @@ class CryptosList extends StatelessWidget {
           return Refresh(child: LoadingContainer());
         }
 
-        return Refresh(
-          child: ListView.builder(
-            itemCount: listOfCryptoIds.data.length,
-            itemBuilder: (context, int index) {
-              bloc.fetchCryptoInfo(listOfCryptoIds.data[index]);
+        return Container(
+          color: Colors.white,
+          child: Column(
+            children: <Widget>[
+              Refresh(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: listOfCryptoIds.data.length,
+                  itemBuilder: (context, int index) {
+                    bloc.fetchCryptoInfo(listOfCryptoIds.data[index]);
 
-              return CryptosListTile(cryptoId: listOfCryptoIds.data[index]);
-            },
+                    return CryptosListTile(
+                        cryptoId: listOfCryptoIds.data[index]);
+                  },
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 24.0),
+                child: FlatButton.icon(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, '/addCryptoCurrency'),
+                  icon: Icon(
+                    Icons.add,
+                    color: Color.fromRGBO(56, 87, 117, 1.0),
+                  ),
+                  label: Text(
+                    'Add a Cryptocurrency',
+                    style: TextStyle(
+                      color: Color.fromRGBO(56, 87, 117, 1.0),
+                      fontFamily: 'Inter',
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },
